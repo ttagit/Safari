@@ -1,3 +1,4 @@
+//window.location.reload();
 
 (function(undefined) {
   //var bgPage = chrome.extension.getBackgroundPage();
@@ -19,37 +20,49 @@
     console.log(msgEvent);
       if (msgEvent.name == 'pin') {
         twitter.sign(msgEvent.message, function(success){
-          //safari.self.tab.dispatchMessage('pinverified', success);
           if(success)
             alert("You are now logged into TTAGIT, you may close this tab.");
         });
           
       }
 
-      if(msgEvent.name == 'url' && twitter.isAuthenticated()) {
-        $("#loading").addClass('show').removeClass('hide');
-        twitter.fetchTimelines(root,input,loading,msgEvent.message);
-      }
+      // if(msgEvent.name == 'url' && twitter.isAuthenticated()) {
+      //   $("#loading").addClass('show').removeClass('hide');
+
+      //   
+      // }
+  }
+  function body(){
+    $("body").html('<div class="row"><div id="loading" class="col-xs-7"><p class="loadingInformation"></p><img src="ajax-loader.gif"></div></div><div id="input"></div><div id="content" class="row"></div>');
+  }
+  //safari.application.addEventListener('focus', handleMessage, false);
+  //window.addEventListener('focus', handleMessage, true);
+  //safari.application.addEventListener("command", handleOpen, false);
+
+  function handleOpen(e) {
+      body();
+      var root = document.querySelector("#content");
+        
+      var input = document.querySelector("#input");
+
+      var loading = document.querySelector("#loading");
+      twitter.fetchTimelines(root,input,loading,safari.application.activeBrowserWindow.activeTab.url);
   }
 
-  safari.application.addEventListener('message', handleMessage, false);
+  safari.application.addEventListener("popover", handleOpen, true);
+
+  //safari.application.addEventListener("open", handleOpen, true);
 
   if (twitter.isAuthenticated()) {
-    loginFormElement.style.display = "none";
 
-    $("#welcome").addClass('hide').removeClass('show');
     
-    var root = document.querySelector("#content");
-    
-    var input = document.querySelector("#input");
 
-    var loading = document.querySelector("#loading");
-    
     
 
     //chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-      if(safari.application.activeBrowserWindow.activeTab.url)
-        twitter.fetchTimelines(root,input,loading,safari.application.activeBrowserWindow.activeTab.url);
+      if(safari.application.activeBrowserWindow.activeTab.url){
+        handleOpen();
+      }
 
     //});
 

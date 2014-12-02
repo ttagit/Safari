@@ -26,17 +26,12 @@ if (pinElement !== null && window.location.href.match(/api.twitter.com([^&]+)/) 
 
     safari.self.tab.dispatchMessage('pin', pin);
 
-    safari.self.addEventListener('message', function(event){
-    	if(event.message == 'pinverified' && event.message){
-    		alert("Authorized, woot!");
-    	}
-    }, false);
-
   }
 }
 
-else{
-	safari.self.tab.dispatchMessage('url',window.location.href);
-}
+// else{
+
+// 	safari.self.tab.dispatchMessage('url',window.location.href);
+// }
 
 });

@@ -27,17 +27,25 @@
 			<dict>
 				<key>Filename</key>
 				<string>popup.html</string>
+				<key>Height</key>
+				<real>600</real>
 				<key>Identifier</key>
 				<string>ttagit</string>
+				<key>Width</key>
+				<real>600</real>
 			</dict>
 		</array>
 		<key>Toolbar Items</key>
 		<array>
 			<dict>
+				<key>Command</key>
+				<string></string>
 				<key>Identifier</key>
 				<string>ttagit</string>
 				<key>Image</key>
 				<string>icon.png</string>
+				<key>Include By Default</key>
+				<true/>
 				<key>Label</key>
 				<string>TTAGUT</string>
 				<key>Palette Label</key>

@@ -288,10 +288,10 @@ Twitter.prototype.fetchTimelines = function(elm,inputButton,loading,url) {
 
       },
       error: function(xhr, status, error) {
-        alert(JSON.stringify(xhr));
-        alert(JSON.stringify(message));
-        alert(JSON.stringify(error));
-        alert(OAuth.addToURL(message.action, message.parameters));
+        //alert(JSON.stringify(xhr));
+        //alert(JSON.stringify(message));
+        //alert(JSON.stringify(error));
+        //alert(OAuth.addToURL(message.action, message.parameters));
         
         if (xhr.status === 401) {
           //localStorage.removeItem("access_token");
@@ -623,8 +623,8 @@ Twitter.prototype.fetchTimelines = function(elm,inputButton,loading,url) {
       renderTweets();
         
 
-      elm.removeChild(elm.querySelector("#twitter-login"));
-      $(elm).append(root);
+      //elm.removeChild(elm.querySelector("#twitter-login"));
+      $(elm).html(root);
       
       $(elm).prepend(
         
@@ -636,13 +636,13 @@ Twitter.prototype.fetchTimelines = function(elm,inputButton,loading,url) {
 
         );
 
-      $(inputButton).append(tweetInput);
+      $(inputButton).html(tweetInput);
     },
     "error": function(xhr, status, error) {
-      alert(JSON.stringify(xhr));
-      alert(JSON.stringify(status));
-      alert(JSON.stringify(error));
-      alert(OAuth.addToURL(message.action, message.parameters));
+      //alert(JSON.stringify(xhr));
+      //alert(JSON.stringify(status));
+      //alert(JSON.stringify(error));
+      //alert(OAuth.addToURL(message.action, message.parameters));
 
       if (xhr.status === 401) {
         //localStorage.removeItem("access_token");
