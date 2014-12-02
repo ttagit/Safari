@@ -37,6 +37,7 @@ Twitter.prototype.parseToken = function(data) {
 };
 
 Twitter.prototype.login = function() {
+  console.log("LOGIN called");
   var message = {
     "method": "GET",
     "action": "https://api.twitter.com/oauth/request_token",
@@ -71,8 +72,9 @@ Twitter.prototype.login = function() {
 
         this.request_token = token;
         this.request_token_secret = secret;
-
-        window.open(OAuth.addToURL(message.action, message.parameters));
+        safari.application.activeBrowserWindow.openTab().url = OAuth.addToURL(message.action, message.parameters)
+        //
+        //window.open();
       },
       this
     )

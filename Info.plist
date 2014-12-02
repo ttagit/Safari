@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Hitesh Joshi</string>
 	<key>Builder Version</key>
-	<string>10600.1.25</string>
+	<string>10600.1.25.1</string>
 	<key>CFBundleDisplayName</key>
 	<string>ttagit</string>
 	<key>CFBundleIdentifier</key>
@@ -19,30 +19,33 @@
 	<key>Chrome</key>
 	<dict>
 		<key>Database Quota</key>
-		<real>5242880</real>
-		<key>Menus</key>
-		<array>
-			<dict>
-				<key>Identifier</key>
-				<string>Hello</string>
-				<key>Menu Items</key>
-				<array>
-					<dict>
-						<key>Identifier</key>
-						<string>hello</string>
-						<key>Title</key>
-						<string>hello</string>
-					</dict>
-				</array>
-			</dict>
-		</array>
+		<real>1048576</real>
+		<key>Global Page</key>
+		<string>global.html</string>
 		<key>Popovers</key>
 		<array>
 			<dict>
 				<key>Filename</key>
 				<string>popup.html</string>
 				<key>Identifier</key>
-				<string>popup</string>
+				<string>ttagit</string>
+			</dict>
+		</array>
+		<key>Toolbar Items</key>
+		<array>
+			<dict>
+				<key>Identifier</key>
+				<string>ttagit</string>
+				<key>Image</key>
+				<string>icon.png</string>
+				<key>Label</key>
+				<string>TTAGUT</string>
+				<key>Palette Label</key>
+				<string>TTAGIT</string>
+				<key>Popover</key>
+				<string>ttagit</string>
+				<key>Tool Tip</key>
+				<string>Realtime twitter commenting</string>
 			</dict>
 		</array>
 	</dict>
@@ -52,16 +55,13 @@
 		<dict>
 			<key>Start</key>
 			<array>
+				<string>library/jquery.min.js</string>
+				<string>library/sha1.js</string>
+				<string>library/oauth.js</string>
+				<string>twitter.js</string>
 				<string>background.js</string>
 			</array>
 		</dict>
-		<key>Stylesheets</key>
-		<array>
-			<string>style.css</string>
-			<string>reset.css</string>
-			<string>popup.css</string>
-			<string>css/font-awesome.min.css</string>
-		</array>
 	</dict>
 	<key>Description</key>
 	<string>twitter commenting</string>
