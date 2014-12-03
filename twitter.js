@@ -191,9 +191,10 @@ Twitter.prototype.fetchTimelines = function(elm,inputButton,loading,url) {
 
       $("<div>").attr("class","form-group").append(
         $("<textarea>").attr("class","inputbox form-control").attr("placeholder","What's on your mind?"),
-        $("<button>").html("Tweet about this page").attr("id","sendTweet").attr("class","btn btn-default pull-right")
+        $("<button type='button'>").html("Tweet about this page").attr("id","sendTweet").attr("class","btn btn-default pull-right")
         .click(function(){
               sendTweet();
+              return true;
           })
         )
 
@@ -252,6 +253,7 @@ Twitter.prototype.fetchTimelines = function(elm,inputButton,loading,url) {
       },
       dataType: "json"
     });
+    return true;
   };
 
 
