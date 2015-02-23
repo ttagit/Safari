@@ -35,7 +35,7 @@
   function body(){
     $("body").html('<div class="row"><div id="loading" class="col-xs-7"><p class="loadingInformation"></p><img src="ajax-loader.gif"></div></div><div id="input"></div><div id="content" class="row"></div>');
   }
-  //safari.application.addEventListener('focus', handleMessage, false);
+  safari.application.addEventListener('message', handleMessage, false);
   //window.addEventListener('focus', handleMessage, true);
   //safari.application.addEventListener("command", handleOpen, false);
 
@@ -49,26 +49,22 @@
       twitter.fetchTimelines(root,input,loading,safari.application.activeBrowserWindow.activeTab.url);
   }
 
-  safari.application.addEventListener("popover", handleOpen, true);
+  
 
   //safari.application.addEventListener("open", handleOpen, true);
+  var popcall = function(){
+    if (twitter.isAuthenticated()) {
+        if(safari.application.activeBrowserWindow.activeTab.url){
+          handleOpen();
+        }
 
-  if (twitter.isAuthenticated()) {
-
-    
-
-    
-
-    //chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-      if(safari.application.activeBrowserWindow.activeTab.url){
-        handleOpen();
-      }
-
-    //});
-
-  } else {
-    $("#welcome").addClass('show').removeClass('hide');
-    loginFormElement.style.display = "block";
+    } else {
+      $("#welcome").addClass('show').removeClass('hide');
+      loginFormElement.style.display = "block";
+    }
   }
+
+  safari.application.addEventListener("popover", popcall, true);
+    
 
 })();

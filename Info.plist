@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Hitesh Joshi</string>
 	<key>Builder Version</key>
-	<string>10600.1.25.1</string>
+	<string>10600.2.5</string>
 	<key>CFBundleDisplayName</key>
 	<string>ttagit</string>
 	<key>CFBundleIdentifier</key>
@@ -47,7 +47,7 @@
 				<key>Include By Default</key>
 				<true/>
 				<key>Label</key>
-				<string>TTAGUT</string>
+				<string>TTAGIT</string>
 				<key>Palette Label</key>
 				<string>TTAGIT</string>
 				<key>Popover</key>

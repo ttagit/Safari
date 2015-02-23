@@ -1,4 +1,4 @@
-const TWITTER_USER_ID_STORAGE_KEY = "userid";
+const TWITTER_USER_ID_STORAGE_KEY = "UserId";
 
 var Twitter = function() {};
 

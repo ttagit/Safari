@@ -9,6 +9,8 @@ jQuery(document).ready(function(){
 
 var pinElement = (jQuery("div#oauth_pin").find("code").text());
 
+
+
 if (pinElement !== null && window.location.href.match(/api.twitter.com([^&]+)/) && document.referrer.match(/oauth_consumer_key=([^&]+)/)) {
 
 
@@ -17,8 +19,8 @@ if (pinElement !== null && window.location.href.match(/api.twitter.com([^&]+)/) 
 	var pin = 0;
 
   if (RegExp.$1 === CONSUMER_KEY) {
-  	if( intRegex.test(parseInt(pinElement) ) ) {
-  		pin = parseInt(pinElement);
+    if( intRegex.test(parseInt(pinElement) ) ) {
+      pin = parseInt(pinElement);
   	}
   	else
     	pin = prompt("Enter the PIN displayed by Twitter");
