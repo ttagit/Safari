@@ -46,7 +46,9 @@
       var input = document.querySelector("#input");
 
       var loading = document.querySelector("#loading");
-      twitter.fetchTimelines(root,input,loading,safari.application.activeBrowserWindow.activeTab.url);
+      var login = document.getElementsByTagName("twitterLogin")
+      console.log(login)
+      twitter.fetchTimelines(root,input,loading,login,safari.application.activeBrowserWindow.activeTab.url);
   }
 
   

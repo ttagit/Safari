@@ -133,8 +133,7 @@ Twitter.prototype.isAuthenticated = function() {
   return !_.isNull(this.getAccessToken()) && !_.isNull(this.getAccessTokenSecret()) && _.isNumber(this.getUserID()) ? true : false;
 };
 
-Twitter.prototype.fetchTimelines = function(elm,inputButton,loading,url) {
-  //
+Twitter.prototype.fetchTimelines = function(elm,inputButton,loading,login,url) {
   var accessToken = this.getAccessToken();
   var accessTokenSecret = this.getAccessTokenSecret();
 
@@ -213,10 +212,10 @@ Twitter.prototype.fetchTimelines = function(elm,inputButton,loading,url) {
   var logOut = function(){
     alert("You are now logged out.")
     localStorage.removeItem(ACCESS_TOKEN_STORAGE_KEY);
-    $(elm.querySelector("#twitter-login")).css("display", "block");
-    $(elm.querySelector("#content")).css("display", "none");
-    $(elm.querySelector("#input")).css("display", "none");
-    $(elm.querySelector("#loading")).css("display", "none");
+    console.log(login);
+    $(elm).html(login)
+    $(login).addClass('show').removeClass('hide');
+    window.location.reload();    
   }
 
   var sendTweet = function(){
@@ -255,7 +254,7 @@ Twitter.prototype.fetchTimelines = function(elm,inputButton,loading,url) {
         if (xhr.status === 401) {
           alert("Your session expired. Please relogin.")
           localStorage.removeItem(ACCESS_TOKEN_STORAGE_KEY);
-          $(elm.querySelector("#twitter-login")).css("display", "block");
+          window.location.reload();
         }
       },
       dataType: "json"
@@ -305,7 +304,7 @@ Twitter.prototype.fetchTimelines = function(elm,inputButton,loading,url) {
         if (xhr.status === 401) {
           alert("Your session expired. Please relogin.")
           localStorage.removeItem(ACCESS_TOKEN_STORAGE_KEY);
-          $(elm.querySelector("#twitter-login")).css("display", "block");
+          window.location.reload();
         }
       },
       dataType: "json"
@@ -347,7 +346,7 @@ Twitter.prototype.fetchTimelines = function(elm,inputButton,loading,url) {
         if (xhr.status === 401) {
           alert("Your session expired. Please relogin.")
           localStorage.removeItem(ACCESS_TOKEN_STORAGE_KEY);
-          $(elm.querySelector("#twitter-login")).css("display", "block");
+          window.location.reload();
         }
       },
       dataType: "json"
@@ -395,7 +394,7 @@ Twitter.prototype.fetchTimelines = function(elm,inputButton,loading,url) {
         if (xhr.status === 401) {
           alert("Your session expired. Please relogin.")
           localStorage.removeItem(ACCESS_TOKEN_STORAGE_KEY);
-          $(elm.querySelector("#twitter-login")).css("display", "block");
+          window.location.reload();
         }
       },
       dataType: "json"
@@ -664,7 +663,7 @@ Twitter.prototype.fetchTimelines = function(elm,inputButton,loading,url) {
       if (xhr.status === 401) {
         alert("Your session expired. Please relogin.")
         localStorage.removeItem(ACCESS_TOKEN_STORAGE_KEY);
-        $(elm.querySelector("#twitter-login")).css("display", "block");
+        window.location.reload();
       }
     }
   });
