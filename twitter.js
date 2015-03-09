@@ -37,7 +37,7 @@ Twitter.prototype.parseToken = function(data) {
 };
 
 Twitter.prototype.login = function() {
-  console.log("LOGIN called");
+
   var message = {
     "method": "GET",
     "action": "https://api.twitter.com/oauth/request_token",
@@ -210,7 +210,14 @@ Twitter.prototype.fetchTimelines = function(elm,inputButton,loading,url) {
 
 
   
-
+  var logOut = function(){
+    alert("You are now logged out.")
+    localStorage.removeItem(ACCESS_TOKEN_STORAGE_KEY);
+    $(elm.querySelector("#twitter-login")).css("display", "block");
+    $(elm.querySelector("#content")).css("display", "none");
+    $(elm.querySelector("#input")).css("display", "none");
+    $(elm.querySelector("#loading")).css("display", "none");
+  }
 
   var sendTweet = function(){
     $(loading).addClass('show').removeClass('hide');
@@ -246,9 +253,9 @@ Twitter.prototype.fetchTimelines = function(elm,inputButton,loading,url) {
         //alert(encodeURIComponent($(tweetInput).find("textarea").val() +" " + url).replace(/'/g,"%27").replace(/"/g,"%22"));
 
         if (xhr.status === 401) {
-          //localStorage.removeItem("access_token");
-
-          //$(elm.querySelector("#twitter-login")).css("display", "block");
+          alert("Your session expired. Please relogin.")
+          localStorage.removeItem(ACCESS_TOKEN_STORAGE_KEY);
+          $(elm.querySelector("#twitter-login")).css("display", "block");
         }
       },
       dataType: "json"
@@ -296,9 +303,9 @@ Twitter.prototype.fetchTimelines = function(elm,inputButton,loading,url) {
         //alert(OAuth.addToURL(message.action, message.parameters));
         
         if (xhr.status === 401) {
-          //localStorage.removeItem("access_token");
-
-          //$(elm.querySelector("#twitter-login")).css("display", "block");
+          alert("Your session expired. Please relogin.")
+          localStorage.removeItem(ACCESS_TOKEN_STORAGE_KEY);
+          $(elm.querySelector("#twitter-login")).css("display", "block");
         }
       },
       dataType: "json"
@@ -338,9 +345,9 @@ Twitter.prototype.fetchTimelines = function(elm,inputButton,loading,url) {
         //alert(encodeURIComponent($(tweetInput).find("textarea").val() +" " + url).replace(/'/g,"%27").replace(/"/g,"%22"));
 
         if (xhr.status === 401) {
-          //localStorage.removeItem("access_token");
-
-          //$(elm.querySelector("#twitter-login")).css("display", "block");
+          alert("Your session expired. Please relogin.")
+          localStorage.removeItem(ACCESS_TOKEN_STORAGE_KEY);
+          $(elm.querySelector("#twitter-login")).css("display", "block");
         }
       },
       dataType: "json"
@@ -386,9 +393,9 @@ Twitter.prototype.fetchTimelines = function(elm,inputButton,loading,url) {
         //alert(encodeURIComponent($(tweetInput).find("textarea").val() +" " + url).replace(/'/g,"%27").replace(/"/g,"%22"));
 
         if (xhr.status === 401) {
-          //localStorage.removeItem("access_token");
-
-          //$(elm.querySelector("#twitter-login")).css("display", "block");
+          alert("Your session expired. Please relogin.")
+          localStorage.removeItem(ACCESS_TOKEN_STORAGE_KEY);
+          $(elm.querySelector("#twitter-login")).css("display", "block");
         }
       },
       dataType: "json"
@@ -632,8 +639,16 @@ Twitter.prototype.fetchTimelines = function(elm,inputButton,loading,url) {
         
         $("<div>").attr("id","header").attr("class","col-xs-12 border")
         .prepend(
-          $("<h5>").attr("class","col-xs-12").html("<b class='bold-heading'>Tweets</b> for <i>" + url + "</i>")
+          $("<h5>").attr("class","col-xs-12").html("<b class='bold-heading'>Tweets</b> for <i>" + url)
           )
+
+        .append(
+          $("<button type='button'>").html("LogOut").attr("id","sendTweet").attr("class","btn btn-default pull-right")
+        .click(function(){
+              logOut();
+              return true;
+          })
+        )
 
 
         );
@@ -647,9 +662,9 @@ Twitter.prototype.fetchTimelines = function(elm,inputButton,loading,url) {
       //alert(OAuth.addToURL(message.action, message.parameters));
 
       if (xhr.status === 401) {
-        //localStorage.removeItem("access_token");
-
-        //$(elm.querySelector("#twitter-login")).css("display", "block");
+        alert("Your session expired. Please relogin.")
+        localStorage.removeItem(ACCESS_TOKEN_STORAGE_KEY);
+        $(elm.querySelector("#twitter-login")).css("display", "block");
       }
     }
   });
