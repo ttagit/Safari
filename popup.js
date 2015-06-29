@@ -1,6 +1,5 @@
 //window.location.reload();
-
-(function(undefined) {
+var popup = function(undefined) {
   //var bgPage = chrome.extension.getBackgroundPage();
 
   var twitter = new Twitter();
@@ -69,4 +68,16 @@
   safari.application.addEventListener("popover", popcall, true);
     
 
-})();
+};
+
+popup();
+
+
+if (typeof exports !== 'undefined') {
+  if (typeof module !== 'undefined' && module.exports) {
+    exports = module.exports = popup;
+  }
+  exports.popup = popup;
+} else {
+  root['popup'] = popup;
+}
