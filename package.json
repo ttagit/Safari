@@ -1,0 +1,13 @@
+{
+  "name": "ttagit-safari",
+  "version": "0.1.1",
+  "private": true,
+  "scripts": {
+    "test": "make test"
+  },
+  "devDependencies": {
+    "mocha": "^2.1.0",
+    "should": "^4.4.1",
+    "supertest": "^0.15.0"
+  }
+}
