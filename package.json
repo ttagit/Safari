@@ -5,6 +5,7 @@
   "scripts": {
     "test": "true"
   },
+  
   "devDependencies": {
     "mocha": "^2.1.0",
     "should": "^4.4.1",
