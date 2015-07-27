@@ -5,27 +5,73 @@
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
   </head>
   <body class="container-fluid">
-    
-    <div class="row">
-      <div id="loading" class="col-xs-7">
-        <p class="loadingInformation">
-          
-        </p>
-        <img src="ajax-loader.gif">
-      </div>
-    </div>
-    <div id="input">
-      
-    </div>
+   
+    <div role="tabpanel">
 
-    <div id="content" class="row">
-      <twitterLogin id="twitter-login" class="col-xs-12">
-        <button class="btn btn-primary"> Login with twitter</button>
-        <p>
-          You need to login using twitter to use TTAGIT peer2peer twitter comments.
-        </p>
-      </twitterLogin>
-    </div>
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation"><a href="#twitter" aria-controls="twitter" role="tab" data-toggle="tab">
+        <i class="fa fa-twitter"></i>
+        Twitter</a></li>
+        <li role="presentation"><a href="#facebook" aria-controls="facebook" role="tab" data-toggle="tab">
+        <i class="fa fa-facebook"></i> Facebook</a></li>
+        <li role="presentation" class="active"><a href="#behaviour" aria-controls="facebook" role="tab" data-toggle="tab"><i class="fa fa-th"></i> Page Behaviour</a></li>
+      </ul>
+      <!-- Tab panes -->
+      <div class="tab-content">
+        
+        <div role="tabpanel" class="tab-pane" id="twitter">
+
+          <div class="row">
+            <div id="loading" class="col-xs-7">
+              <p class="loadingInformation">
+                
+              </p>
+              <img src="ajax-loader.gif">
+            </div>
+          </div>
+          <div id="input">
+            
+          </div>
+
+          <div id="content" class="row">
+            <twitterLogin id="twitter-login" class="col-xs-12">
+              <button class="btn btn-primary"> Login with twitter</button>
+              <p>
+                You need to login using twitter to use TTAGIT peer2peer twitter comments.
+              </p>
+            </twitterLogin>
+          </div>
+        </div>
+
+
+        <div role="tabpanel" class="tab-pane" id="facebook">          
+
+          <div class="row">
+            <div id="fb_loading" class="col-xs-7 hide">
+              <img src="ajax-loader.gif">
+            </div>
+          </div>
+          <div id="fb_input">
+            
+          </div>
+
+
+
+          <div id="fb_content" class="row">
+            <div id="facebook-login" class="col-xs-12">
+              <a target="_blank" class="btn btn-block btn-social btn-facebook" href="https://www.facebook.com/dialog/oauth?client_id=1455229401436343&response_type=token&scope=publish_actions&redirect_uri=http://www.facebook.com/connect/login_success.html">
+              <i class="fa fa-facebook"></i>
+              Facebook Connect</a>
+              <p>
+                Connect your facebook account to use this.
+              </p>
+            </div>
+          </div>
+          
+        </div>
+
+      </div>
 
     
     
@@ -37,7 +83,7 @@
     <script type="text/javascript" src="library/oauth.js"></script>
     <script type="text/javascript" src="library/bootstrap.min.js"></script>
     <script type="text/javascript" src="library/jquery.timeago.js"></script>
-    <script type="text/javascript" src="twitter.js"></script>
+    <script type="text/javascript" src="network.js"></script>
     <script type="text/javascript" src="popup.js"></script>
   </body>
 </html>

@@ -2,7 +2,7 @@
 var popup = function(undefined) {
   //var bgPage = chrome.extension.getBackgroundPage();
 
-  var twitter = new Twitter();
+  var twitter = new Networks();
 
   var loginFormElement = document.querySelector("#twitter-login");
   loginFormElement.addEventListener("click", function() {
@@ -47,7 +47,7 @@ var popup = function(undefined) {
       var loading = document.querySelector("#loading");
       var login = document.getElementsByTagName("twitterLogin")
       console.log(login)
-      twitter.fetchTimelines(root,input,loading,login,safari.application.activeBrowserWindow.activeTab.url);
+      twitter.fetchTwitter(root,input,loading,login,safari.application.activeBrowserWindow.activeTab.url);
   }
 
   

@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Hitesh Joshi</string>
 	<key>Builder Version</key>
-	<string>10600.3.18</string>
+	<string>10600.7.12</string>
 	<key>CFBundleDisplayName</key>
 	<string>ttagit</string>
 	<key>CFBundleIdentifier</key>
@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>2.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Database Quota</key>
@@ -66,13 +66,13 @@
 				<string>library/jquery.min.js</string>
 				<string>library/sha1.js</string>
 				<string>library/oauth.js</string>
-				<string>twitter.js</string>
+				<string>network.js</string>
 				<string>background.js</string>
 			</array>
 		</dict>
 	</dict>
 	<key>Description</key>
-	<string>twitter commenting</string>
+	<string>twitter commenting with NLP</string>
 	<key>DeveloperIdentifier</key>
 	<string>557PCK369T</string>
 	<key>ExtensionInfoDictionaryVersion</key>

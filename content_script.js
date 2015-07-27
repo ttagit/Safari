@@ -3,8 +3,6 @@ jQuery(document).ready(function(){
 
 var pinElement = (jQuery("div#oauth_pin").find("code").text());
 
-//console.log(pinElement);
-
 if (pinElement !== null && document.referrer.match(/oauth_consumer_key=([^&]+)/)) {
 	//regex for integer
 	var intRegex = /^\d+$/;
