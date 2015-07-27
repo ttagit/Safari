@@ -36,6 +36,11 @@ Networks.prototype.parseToken = function(data) {
   return null;
 };
 
+
+Networks.prototype.fbLogin = function(){
+  safari.application.activeBrowserWindow.openTab().url = 'https://www.facebook.com/dialog/oauth?client_id=1455229401436343&response_type=token&scope=publish_actions&redirect_uri=http://www.facebook.com/connect/login_success.html';
+}
+
 Networks.prototype.login = function() {
 
   var message = {

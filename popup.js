@@ -4,8 +4,17 @@ var popup = function(undefined) {
 
   var twitter = new Networks();
 
-  var loginFormElement = document.querySelector("#twitter-login");
-  loginFormElement.addEventListener("click", function() {
+
+  var facebookLoginButton = document.querySelector("#fb-login");
+
+  facebookLoginButton.addEventListener("click", function() {
+    $("#fb_loading").addClass('show').removeClass('hide');
+    $("#fb_loading > #loadingInformation").html("Redirecting you to facebook autentication");
+    twitter.fbLogin();
+  });
+
+  var twitterLoginButton = document.querySelector("#twitter-login");
+  twitterLoginButton.addEventListener("click", function() {
     $("#loading").addClass('show').removeClass('hide');
     $("#loading > #loadingInformation").html("Redirecting you to twitter autentication");
     twitter.login();
@@ -61,13 +70,16 @@ var popup = function(undefined) {
 
     } else {
       $("#welcome").addClass('show').removeClass('hide');
-      loginFormElement.style.display = "block";
+      twitterLoginButton.style.display = "block";
     }
   }
 
   safari.application.addEventListener("popover", popcall, true);
-    
-
+  safari.application.addEventListener("activate", activeTabHandler, true);
+  function activeTabHandler(event) {
+    console.log(safari.application.activeBrowserWindow.activeTab);
+    //safari.application.activeBrowserWindow.activeTab.page.dispatchMessage('someId', false);
+  }  
 };
 
 popup();
