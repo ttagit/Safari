@@ -87,6 +87,8 @@
 			<string>All</string>
 		</dict>
 	</dict>
+	<key>Update Manifest URL</key>
+	<string>https://ttagit.org/safari/updater.plist</string>
 	<key>Website</key>
 	<string>http://ttagit.com</string>
 </dict>
