@@ -99,11 +99,11 @@ var popup = function(undefined) {
 popup();
 
 
-// if (typeof exports !== 'undefined') {
-//   if (typeof module !== 'undefined' && module.exports) {
-//     exports = module.exports = popup;
-//   }
-//   exports.popup = popup;
-// } else {
-//   root['popup'] = popup;
-// }
+if (typeof exports !== 'undefined') {
+  if (typeof module !== 'undefined' && module.exports) {
+    exports = module.exports = popup;
+  }
+  exports.popup = popup;
+} else {
+  //root['popup'] = popup;
+}
