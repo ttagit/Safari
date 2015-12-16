@@ -63,7 +63,7 @@ var popup = function(undefined) {
 
   //safari.application.addEventListener("open", handleOpen, true);
   var popcall = function(){
-    if (networks.isAuthenticated()) {
+    if (networks.isTwitterAuthenticated()) {
         if(safari.application.activeBrowserWindow.activeTab.url){
           handleOpen();
         }
@@ -74,7 +74,8 @@ var popup = function(undefined) {
     }
 
     var fbLoginFormElement = document.querySelector("#facebook-login");
-    if (localStorage.fbToken) {
+
+    if (networks.networks.isFacebookAuthenticated()) {
         fbLoginFormElement.style.display = "none";
         var fb_root = document.querySelector("#fb_content");
       

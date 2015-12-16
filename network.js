@@ -2,13 +2,21 @@ const TWITTER_USER_ID_STORAGE_KEY = "UserId";
 
 var Networks = function() {};
 
-Networks.prototype.getAccessToken = function() {
+Networks.prototype.getTwitterAccessToken = function() {
   var accessToken = localStorage.getItem(ACCESS_TOKEN_STORAGE_KEY);
 
   return _.isString(accessToken) ? accessToken : null;
 };
 
-Networks.prototype.getAccessTokenSecret = function() {
+
+Networks.prototype.getFacebookAccessToken = function() {
+  var accessToken = localStorage.getItem('fbToken');
+
+  return _.isString(accessToken) ? accessToken : null;
+};
+
+
+Networks.prototype.getTwitterAccessTokenSecret = function() {
   var accessTokenSecret = localStorage.getItem(ACCESS_TOKEN_SECRET_STORAGE_KEY);
 
   return _.isString(accessTokenSecret) ? accessTokenSecret : null;
@@ -134,9 +142,14 @@ Networks.prototype.save = function(accessToken, accessTokenSecret, userid) {
   localStorage.setItem(TWITTER_USER_ID_STORAGE_KEY, userid);
 };
 
-Networks.prototype.isAuthenticated = function() {
-  return !_.isNull(this.getAccessToken()) && !_.isNull(this.getAccessTokenSecret()) && _.isNumber(this.getUserID()) ? true : false;
+Networks.prototype.isTwitterAuthenticated = function() {
+  return !_.isNull(this.getTwitterAccessToken()) && !_.isNull(this.getTwitterAccessTokenSecret()) && _.isNumber(this.getUserID()) ? true : false;
 };
+
+Networks.prototype.isFacebookAuthenticated = function() {
+  return !_.isNull(this.getFacebookAccessToken()) ? true : false;
+};
+
 
 
 
@@ -218,7 +231,6 @@ Networks.prototype.showSentiments = function(elm,loading,url,cb){
 
 
 Networks.prototype.fetchFacebook = function(elm,inputButton,loading,url){
-
   
   var like = null;
   var share = null;
@@ -505,8 +517,8 @@ Networks.prototype.fetchFacebook = function(elm,inputButton,loading,url){
 
 Networks.prototype.fetchTwitter = function(elm,inputButton,loading,login,url) {
   var twtr = this;
-  var accessToken = this.getAccessToken();
-  var accessTokenSecret = this.getAccessTokenSecret();
+  var accessToken = this.getTwitterAccessToken();
+  var accessTokenSecret = this.getTwitterAccessTokenSecret();
 
   var q = encodeURIComponent(url).replace(/'/g,"%27").replace(/"/g,"%22");
 
@@ -1010,7 +1022,7 @@ Networks.prototype.fetchTwitter = function(elm,inputButton,loading,login,url) {
         }
         else{
           var root = $("<div>").attr("id", "tweets").attr("class", "col-xs-12");
-          $(elm).prepend($("<div>").html("No tweets found!"));
+          $(root).prepend($("<div>").html("No tweets found!"));
           $(elm).html(root);
         }
 
