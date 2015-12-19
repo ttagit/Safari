@@ -488,6 +488,7 @@ Networks.prototype.fetchFacebook = function(elm,inputButton,loading,url){
             )
 
           content_div.append(analytics_div);
+          $(elm).html('');
           $(elm).append(analytics_div,content_div,post_div);
         }
       })
