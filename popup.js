@@ -11,7 +11,7 @@ var popup = function(undefined) {
     $("#fb_loading").addClass('show').removeClass('hide');
     $("#fb_loading > #loadingInformation").html("Redirecting you to facebook autentication");
     networks.fbLogin();
-  });
+  }
 
   var twitterLoginButton = document.querySelector("#twitter-login");
   twitterLoginButton.addEventListener("click", function() {
