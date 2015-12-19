@@ -11,7 +11,7 @@ var popup = function(undefined) {
     $("#fb_loading").addClass('show').removeClass('hide');
     $("#fb_loading > #loadingInformation").html("Redirecting you to facebook autentication");
     networks.fbLogin();
-  }
+  });
 
   var twitterLoginButton = document.querySelector("#twitter-login");
   twitterLoginButton.addEventListener("click", function() {
@@ -25,7 +25,16 @@ var popup = function(undefined) {
 
 
   function handleMessage(msgEvent) {
-    console.log(msgEvent);
+
+    if(msgEvent.name=='fb_access'){
+      var token = msgEvent.message;
+      if(token){
+        localStorage.setItem('fbToken',token);
+        alert("You are now logged into TTAGIT using facbook, you may close this tab.");
+        popup();
+      }
+
+    }
       if (msgEvent.name == 'pin') {
         networks.sign(msgEvent.message, function(success){
           if(success)
@@ -75,14 +84,14 @@ var popup = function(undefined) {
 
     var fbLoginFormElement = document.querySelector("#facebook-login");
 
-    if (networks.networks.isFacebookAuthenticated()) {
+    if (networks.isFacebookAuthenticated()) {
         fbLoginFormElement.style.display = "none";
         var fb_root = document.querySelector("#fb_content");
       
         var fb_input = document.querySelector("#fb_input");
 
         var fb_loading = document.querySelector("#fb_loading");
-        network.fetchFacebook(fb_root,fb_input,fb_loading,safari.application.activeBrowserWindow.activeTab.url);
+        networks.fetchFacebook(fb_root,fb_input,fb_loading,safari.application.activeBrowserWindow.activeTab.url);
     }
 
 
@@ -92,7 +101,7 @@ var popup = function(undefined) {
   safari.application.addEventListener("popover", popcall, true);
   safari.application.addEventListener("activate", activeTabHandler, true);
   function activeTabHandler(event) {
-    console.log(safari.application.activeBrowserWindow.activeTab);
+    //console.log(safari.application.activeBrowserWindow.activeTab);
     //safari.application.activeBrowserWindow.activeTab.page.dispatchMessage('someId', false);
   }  
 };

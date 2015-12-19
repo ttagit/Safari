@@ -33,24 +33,29 @@ if (pinElement !== null && window.location.href.match(/api.twitter.com([^&]+)/) 
 
 
 
-//Save token after logging in
-var successURL = 'https://www.facebook.com/connect/login_success.html';
-function onFacebookLogin() {
-    if (!localStorage.getItem('fbToken')) {
-        chrome.tabs.getAllInWindow(null, function(tabs) {
-            for (var i = 0; i < tabs.length; i++) {
-                if (tabs[i].url.indexOf(successURL) == 0) {
-                    var params = tabs[i].url.split('#')[1];
-                    access = params.split('&')[0]
-                    localStorage.setItem('fbToken',access);
-                    chrome.tabs.onUpdated.removeListener(onFacebookLogin);
-                    return;
-                }
-            }
-        });
-    }
-}
-chrome.tabs.onUpdated.addListener(onFacebookLogin);
+  //Save token after logging in
+  var successURL = 'https://www.facebook.com/connect/login_success.html';
+  //window.location.href.match(/api.twitter.com([^&]+)/)
+  //function onFacebookLogin() {
+  //safari.self.tab.dispatchMessage('hello', 'hi');
+      if (window.location.href.match(successURL)) {
+        //safari.self.tab.dispatchMessage('hello',safari.self.activeBrowserWindow.activeTab.url);
+          //safari.self.activeBrowserWindow.activeTab.url
+          //chrome.tabs.getAllInWindow(null, function(tabs) {
+             // for (var i = 0; i < tabs.length; i++) {
+                  //if (safari.self.activeBrowserWindow.activeTab.url.indexOf(successURL) == 0) {
+                      var params = window.location.href.split('#')[1];
+                      access = params.split('&')[0]
+                      safari.self.tab.dispatchMessage('fb_access', access);
+                      //localStorage.setItem('fbToken',access);
+                      //localStorage.setItem('ttagit_fb_url',false)
+                      //return;
+                  //}
+              //}
+          //});
+      }
+  //}
+  //chrome.tabs.onUpdated.addListener(onFacebookLogin);
 
 // else{
 
@@ -58,3 +63,4 @@ chrome.tabs.onUpdated.addListener(onFacebookLogin);
 // }
 
 });
+
