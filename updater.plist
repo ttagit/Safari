@@ -10,9 +10,9 @@
        <key>Developer Identifier</key>
        <string>YourCertificateID</string>
        <key>CFBundleVersion</key>
-       <string>1</string>
+       <string>2</string>
        <key>CFBundleShortVersionString</key>
-       <string>1.0</string>
+       <string>2.0</string>
        <key>URL</key>
        <string>https://ttagit.org/safari/ttagit.safariextz</string>
      </dict>
